@@ -4,21 +4,16 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+# Create Main UI Window
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
+
         MainWindow.setObjectName("Enigma Sim")
         MainWindow.resize(640, 480)
         MainWindow.setFixedSize(640,480)
         font = QtGui.QFont()
         font.setPointSize(12)
         MainWindow.setFont(font)
-
-        # oImage = QImage('marble.jpg')
-        # sImage = oImage.scaled(QSize(640,480))
-        # palette = QPalette()
-        # palette.setBrush(10, QBrush(sImage))  # 10 = Windowrole
-        # MainWindow.setPalette(palette)
-
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
@@ -31,6 +26,7 @@ class Ui_MainWindow(object):
         self.staticwheelLBIgnore.setGeometry(QtCore.QRect(80, 30, 181, 16))
         font = QtGui.QFont()
         font.setPointSize(8)
+
         self.staticwheelLBIgnore.setFont(font)
         self.staticwheelLBIgnore.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.staticwheelLBIgnore.setObjectName("staticwheelLBIgnore")
@@ -43,6 +39,7 @@ class Ui_MainWindow(object):
         self.rotor1selection.setGeometry(QtCore.QRect(80, 50, 201, 22))
         font = QtGui.QFont()
         font.setPointSize(8)
+
         self.rotor1selection.setFont(font)
         self.rotor1selection.setObjectName("rotor1selection")
         self.rotor1selection.addItem("")
@@ -61,6 +58,7 @@ class Ui_MainWindow(object):
         self.rotor3SrIgnore.setObjectName("rotor3SrIgnore")
         self.rotor2selection = QtWidgets.QComboBox(self.groupBox)
         self.rotor2selection.setGeometry(QtCore.QRect(80, 80, 201, 22))
+
         font = QtGui.QFont()
         font.setPointSize(8)
         self.rotor2selection.setFont(font)
@@ -73,6 +71,7 @@ class Ui_MainWindow(object):
         self.rotor2selection.addItem("")
         self.rotor2selection.addItem("")
         self.rotor2selection.addItem("")
+
         self.rotor1SrIgnore = QtWidgets.QLabel(self.groupBox)
         self.rotor1SrIgnore.setGeometry(QtCore.QRect(10, 50, 61, 21))
         self.rotor1SrIgnore.setFrameShape(QtWidgets.QFrame.Box)
@@ -80,6 +79,7 @@ class Ui_MainWindow(object):
         self.rotor1SrIgnore.setObjectName("rotor1SrIgnore")
         self.rotor3selection = QtWidgets.QComboBox(self.groupBox)
         self.rotor3selection.setGeometry(QtCore.QRect(80, 110, 201, 22))
+
         font = QtGui.QFont()
         font.setPointSize(8)
         self.rotor3selection.setFont(font)
@@ -131,7 +131,7 @@ class Ui_MainWindow(object):
         self.rotor1DropDown.addItem("")
         self.rotor1DropDown.addItem("")
         self.rotor1DropDown.addItem("")
-
+# Change the font for the display of 3 rotors
         displayfont = QtGui.QFont()
         displayfont.setBold(True)
         displayfont.setPointSize(25)
@@ -264,7 +264,7 @@ class Ui_MainWindow(object):
         font.setPointSize(9)
         self.ResetBt.setFont(font)
         self.ResetBt.setObjectName("ResetBt")
-
+# Text Input fields can only accept letters, setup validator for the text input field
         regex = QtCore.QRegExp("[a-z-A-Z_]+")
         validator = QtGui.QRegExpValidator(regex)
 
@@ -491,9 +491,17 @@ class Ui_MainWindow(object):
         self.select_rotors() #Select rotor function
         self.messageInput.textEdited.connect(self.resultingMessage)
         self.ResetBt.clicked.connect(self.reset_to_initial)   #Reset to initial Setting
+# Update rotor displays and output message
         self.rotor1DropDown.activated.connect(self.select_rotors)
         self.rotor2DropDown.activated.connect(self.select_rotors)
         self.rotor3DropDown.activated.connect(self.select_rotors)
+        self.rotor1DropDown.activated.connect(self.resultingMessage)
+        self.rotor2DropDown.activated.connect(self.resultingMessage)
+        self.rotor3DropDown.activated.connect(self.resultingMessage)
+        self.rotor1selection.activated.connect(self.resultingMessage)
+        self.rotor2selection.activated.connect(self.resultingMessage)
+        self.rotor3selection.activated.connect(self.resultingMessage)
+
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -618,6 +626,7 @@ class Ui_MainWindow(object):
         self.InputlabelIgnore.setText(_translate("MainWindow", "Input"))
         self.groupBox_4.setTitle(_translate("MainWindow", "Plug Board"))
 
+
     def select_rotors(self):
         self.rotor1_select = [(self.rotor1selection.currentText()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ']
         self.rotor2_select = [(self.rotor2selection.currentText()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ']
@@ -631,13 +640,13 @@ class Ui_MainWindow(object):
         self.rotor1display.setText(self.rotor1_select[1][0])
         self.rotor2display.setText(self.rotor2_select[1][0])
         self.rotor3display.setText(self.rotor3_select[1][0])
-
+# Apply initial setting to the rotors
     def selectInitialSetting(self,rotor,letter):
         index = rotor[1].find(letter)
         rotor[0] = rotor[0][index:] + rotor[0][:index]
         rotor[1] = rotor[1][index:] + rotor[1][:index]
         return rotor
-
+# Rotate rotor by 1 letter
     def rotateRotor(self, rotor):
         rotor[0] = rotor[0][1:] + rotor[0][0]
         rotor[1] = rotor[1][1:] + rotor[1][0]
@@ -650,6 +659,7 @@ class Ui_MainWindow(object):
         letter = rotor[1][index]
         return rotor[0].find(letter)
 
+# This section convert input letter through 3 rotors
     def rotors_section_message(self,rotor1, rotor2, rotor3, reflector, input):
         i, j = 0, 0
         static_wheel = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -675,7 +685,7 @@ class Ui_MainWindow(object):
                 rotor3 = self.rotateRotor(rotor3)
             result.append(static_wheel[index])
         return ''.join(result)
-
+# Take in inputs and switch places of the 2 letters, remove repeated letters pairs
     def plugBoard(self):
         self.topRow = [self.PBFirstLetter1.text().upper(), self.PBFirstLetter2.text().upper(),
                        self.PBFirstLetter3.text().upper(), self.PBFirstLetter4.text().upper(),
@@ -701,9 +711,9 @@ class Ui_MainWindow(object):
             if self.topRow.count(ele) + self.bottomRow.count(ele) > 1:
                 self.topRow[i] =''
                 self.bottomRow[i] =''
-        self.plugboard_valiadation()
+        self.plugboardResetLetter()
 
-    def plugboard_valiadation(self):
+    def plugboardResetLetter(self):
         self.PBFirstLetter1.setText(self.topRow[0])
         self.PBFirstLetter2.setText(self.topRow[1])
         self.PBFirstLetter3.setText(self.topRow[2])
@@ -745,7 +755,6 @@ class Ui_MainWindow(object):
         self.rotor1display.setText(self.rotor1_select[1][0])
         self.rotor2display.setText(self.rotor2_select[1][0])
         self.rotor3display.setText(self.rotor3_select[1][0])
-
 
     def reset_to_initial(self):
         self.select_rotors()
