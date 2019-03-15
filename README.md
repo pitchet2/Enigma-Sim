@@ -10,10 +10,11 @@ THE ENIGMA ENIGMA: HOW THE ENIGMA MACHINE WORKED:
 
 https://hackaday.com/2017/08/22/the-enigma-enigma-how-the-enigma-machine-worked/
 
-![alt text](https://hackadaycom.files.wordpress.com/2017/08/enigma.jpg?w=800)
-
 Instruction:
 This simulation is to simulate the enigma machine. There are 3 parts for the simulation: 
+
+
+ ![GUI](https://github.com/pitchet2/Enigma-Sim/blob/master/GUI.PNG)
 
 
 1) Select Rotor: Selecting Rotor, Rotor 1,2,3 are from the right to the left in the picture. Each rotor has 8 options to choose from.
@@ -22,6 +23,5 @@ This simulation is to simulate the enigma machine. There are 3 parts for the sim
 
 Type in the message to get the output.
 
-To Decode, Copy and paste the message into the field
+To decode, Copy and Paste the message into the field
 
-Icon made by [https://www.flaticon.com/authors/freepik] from www.flaticon.com 
