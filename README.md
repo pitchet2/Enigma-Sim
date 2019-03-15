@@ -19,7 +19,7 @@ This simulation is to simulate the enigma machine. There are 3 parts for the sim
 
 1) Select Rotor: Selecting Rotor, Rotor 1,2,3 are from the right to the left in the picture. Each rotor has 8 options to choose from.
 2) Initial Setting: Set the first letter for each rotor on the display. After Rotor 1 completes 1 revolution, Rotor 2 moves 1 letter. After Rotor2 completes 1 revolution, Rotor 3 moves 1 letter.
-3) Plug Board: Plug board connects a pair of letter. If A connects to B, when A is clicked, the input to the rotor would be B. The Plug Board would automaticaly deletes repeated letters if there were any.
+3) PlugBoard: Plug board connects a pair of the letter. If A connects to B, when A is clicked, the input to the rotor would be B. The Plug Board would automatically delete repeated letters if there were any.
 
 Type in the message to get the output.
 
