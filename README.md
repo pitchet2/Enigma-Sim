@@ -1,17 +1,3 @@
-Detailed Information on Enigma Machine:
-
-https://en.wikipedia.org/wiki/Enigma_machine
-
-https://brilliant.org/wiki/enigma-machine/
-
-Graph on how the machine works:
-
-https://www.theguardian.com/technology/2014/nov/14/how-did-enigma-machine-work-imitation-game
-
-THE ENIGMA ENIGMA: HOW THE ENIGMA MACHINE WORKED:
-
-https://hackaday.com/2017/08/22/the-enigma-enigma-how-the-enigma-machine-worked/
-
 
 Instruction:
 This simulation is to simulate the enigma machine. There are 3 parts for the simulation.
@@ -29,3 +15,16 @@ When a key on the keyboard is pressed, one or more rotors move to form a new enc
 
 Type in the message to get the output. To decode, Copy and Paste the message into the field
 
+Detailed Information on Enigma Machine:
+
+https://en.wikipedia.org/wiki/Enigma_machine
+
+https://brilliant.org/wiki/enigma-machine/
+
+Graph on how the machine works:
+
+https://www.theguardian.com/technology/2014/nov/14/how-did-enigma-machine-work-imitation-game
+
+THE ENIGMA ENIGMA: HOW THE ENIGMA MACHINE WORKED:
+
+https://hackaday.com/2017/08/22/the-enigma-enigma-how-the-enigma-machine-worked/
